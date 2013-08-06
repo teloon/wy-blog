@@ -4,7 +4,7 @@
   <title><![CDATA[WY's Blog]]></title>
   <link href="http://teloon.github.io/wy-blog/atom.xml" rel="self"/>
   <link href="http://teloon.github.io/wy-blog/"/>
-  <updated>2013-08-06T21:53:29+08:00</updated>
+  <updated>2013-08-06T23:23:54+08:00</updated>
   <id>http://teloon.github.io/wy-blog/</id>
   <author>
     <name><![CDATA[Wu Yan]]></name>
@@ -18,14 +18,107 @@
     <link href="http://teloon.github.io/wy-blog/blog/2013/08/04/lorem-ipsum/"/>
     <updated>2013-08-04T23:38:00+08:00</updated>
     <id>http://teloon.github.io/wy-blog/blog/2013/08/04/lorem-ipsum</id>
-    <content type="html"><![CDATA[<p><span class='pullquote-right' data-pullquote='Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'>
+    <content type="html"><![CDATA[<h2>This is the test page</h2>
+
+<p><span class='pullquote-right' data-pullquote='Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'>
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 </span></p>
 
+<!-- more -->
+
+
 <p><img src="http://s.cn.bing.net/az/hprichbg/rb/DazhaiTorchFestival_ZH-CN10007217965_1366x768.jpg" title="&#34;Bing Today&#34;" alt="&#34;Bing Today&#34;"></p>
 
 <blockquote><p>Marriage is an instition in which a man loses his bachelor&#8217;s degree and the woman gets her master&#8217;s.</p><footer><strong>Mr. Wise</strong> <cite><a href='http://www-users.cs.umn.edu/~cosley/humorlist/mail0042.html'>Pithy Marriage Thoughts</a></cite></footer></blockquote>
+
+
+
+
+<figure class='code'><figcaption><span>selenium capture screenshot</span><a href='http://engineeringquality.blogspot.com/2012/12/python-selenium-capturing-screenshot-on.html'>Refer Page</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">base64</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">base64_data</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">get_screenshot_as_base64</span><span class="p">()</span>
+</span><span class='line'><span class="n">screenshot_data</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">decodestring</span><span class="p">(</span><span class="n">base64_data</span><span class="p">)</span>
+</span><span class='line'><span class="n">screenshot_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="n">screenshot_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">screenshot_data</span><span class="p">)</span>
+</span><span class='line'><span class="n">screenshot_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>union-find.py</span><a href='http://code.activestate.com/recipes/577225/'>Source Link </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="sd">MakeSet(x) initializes disjoint set for object x</span>
+</span><span class='line'><span class="sd">Find(x) returns representative object of the set containing x</span>
+</span><span class='line'><span class="sd">Union(x,y) makes two sets containing x and y respectively into one set</span>
+</span><span class='line'><span class="sd"> </span>
+</span><span class='line'><span class="sd">Some Applications:</span>
+</span><span class='line'><span class="sd">- Kruskal&#39;s algorithm for finding minimal spanning trees</span>
+</span><span class='line'><span class="sd">- Finding connected components in graphs</span>
+</span><span class='line'><span class="sd">- Finding connected components in images (binary)</span>
+</span><span class='line'><span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">MakeSet</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span><span class='line'>     <span class="n">x</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">x</span>
+</span><span class='line'>     <span class="n">x</span><span class="o">.</span><span class="n">rank</span>   <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">Union</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+</span><span class='line'>     <span class="n">xRoot</span> <span class="o">=</span> <span class="n">Find</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span class='line'>     <span class="n">yRoot</span> <span class="o">=</span> <span class="n">Find</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</span><span class='line'>     <span class="k">if</span> <span class="n">xRoot</span><span class="o">.</span><span class="n">rank</span> <span class="o">&gt;</span> <span class="n">yRoot</span><span class="o">.</span><span class="n">rank</span><span class="p">:</span>
+</span><span class='line'>         <span class="n">yRoot</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">xRoot</span>
+</span><span class='line'>     <span class="k">elif</span> <span class="n">xRoot</span><span class="o">.</span><span class="n">rank</span> <span class="o">&lt;</span> <span class="n">yRoot</span><span class="o">.</span><span class="n">rank</span><span class="p">:</span>
+</span><span class='line'>         <span class="n">xRoot</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">yRoot</span>
+</span><span class='line'>     <span class="k">elif</span> <span class="n">xRoot</span> <span class="o">!=</span> <span class="n">yRoot</span><span class="p">:</span> <span class="c"># Unless x and y are already in same set, merge them</span>
+</span><span class='line'>         <span class="n">yRoot</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">xRoot</span>
+</span><span class='line'>         <span class="n">xRoot</span><span class="o">.</span><span class="n">rank</span> <span class="o">=</span> <span class="n">xRoot</span><span class="o">.</span><span class="n">rank</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">Find</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="c"># tidy this function</span>
+</span><span class='line'>     <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">parent</span> <span class="o">!=</span> <span class="n">x</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">x</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">Find</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+</span><span class='line'>     <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">parent</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
 
 ]]></content>
   </entry>
