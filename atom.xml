@@ -1,16 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[WY's Blog]]></title>
   <link href="http://teloon.github.io/wy-blog/atom.xml" rel="self"/>
   <link href="http://teloon.github.io/wy-blog/"/>
-  <updated>2013-08-04T22:44:28+08:00</updated>
+  <updated>2013-08-06T21:53:29+08:00</updated>
   <id>http://teloon.github.io/wy-blog/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Wu Yan]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[lorem-ipsum]]></title>
+    <link href="http://teloon.github.io/wy-blog/blog/2013/08/04/lorem-ipsum/"/>
+    <updated>2013-08-04T23:38:00+08:00</updated>
+    <id>http://teloon.github.io/wy-blog/blog/2013/08/04/lorem-ipsum</id>
+    <content type="html"><![CDATA[<p><span class='pullquote-right' data-pullquote='Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</span></p>
+
+<p><img src="http://s.cn.bing.net/az/hprichbg/rb/DazhaiTorchFestival_ZH-CN10007217965_1366x768.jpg" title="&#34;Bing Today&#34;" alt="&#34;Bing Today&#34;"></p>
+
+<blockquote><p>Marriage is an instition in which a man loses his bachelor&#8217;s degree and the woman gets her master&#8217;s.</p><footer><strong>Mr. Wise</strong> <cite><a href='http://www-users.cs.umn.edu/~cosley/humorlist/mail0042.html'>Pithy Marriage Thoughts</a></cite></footer></blockquote>
+
+]]></content>
+  </entry>
   
 </feed>
