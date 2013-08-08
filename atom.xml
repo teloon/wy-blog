@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[WY's Blog]]></title>
+  <title><![CDATA[Wu Yan]]></title>
   <link href="http://teloon.github.io/wy-blog/atom.xml" rel="self"/>
   <link href="http://teloon.github.io/wy-blog/"/>
-  <updated>2013-08-07T00:41:11+08:00</updated>
+  <updated>2013-08-09T00:54:30+08:00</updated>
   <id>http://teloon.github.io/wy-blog/</id>
   <author>
     <name><![CDATA[Wu Yan]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[hello world]]></title>
+    <link href="http://teloon.github.io/wy-blog/blog/2013/08/08/hello-world/"/>
+    <updated>2013-08-08T00:35:00+08:00</updated>
+    <id>http://teloon.github.io/wy-blog/blog/2013/08/08/hello-world</id>
+    <content type="html"><![CDATA[<p>A &ldquo;Hello world&rdquo; program is a computer program that outputs &ldquo;Hello, world&rdquo; on a display device. Because it is typically one of the simplest programs possible in most programming languages, it is by tradition often used to illustrate to beginners the most basic syntax of a programming language. It is mostly used to verify that a language or system is operating correctly.</p>
+
+<!-- more -->
+
+
+<p>In a device that does not display text, a simple program to produce a signal, such as turning on an LED, is often substituted for &ldquo;Hello world&rdquo; as the introductory program.</p>
+
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/6/60/Hello_World_Perl_GTk2_2012-12-04.png"></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[lorem-ipsum]]></title>
