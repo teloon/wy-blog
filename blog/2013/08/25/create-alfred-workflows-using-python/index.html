@@ -1,24 +1,101 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Wu Yan]]></title>
-  <link href="http://teloon.github.io/wy-blog/atom.xml" rel="self"/>
-  <link href="http://teloon.github.io/wy-blog/"/>
-  <updated>2013-08-25T22:33:11+08:00</updated>
-  <id>http://teloon.github.io/wy-blog/</id>
-  <author>
-    <name><![CDATA[Wu Yan]]></name>
-    
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Create Alfred Workflows Using Python - Wu Yan</title>
+	<meta name="author" content="Wu Yan">
 
+	
+	<meta name="description" content="Create Alfred Workflows Using Python Alfred is a spotlight-like productivity tool in OSX platform. Compared with spotlight, it offers some extra &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/wy-blog/atom.xml" rel="alternate" title="Wu Yan" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://teloon.github.io/wy-blog/blog/2013/08/25/create-alfred-workflows-using-python/">
+	<link href="/wy-blog/favicon.png" rel="shortcut icon">
+	<link href="/wy-blog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/wy-blog/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	<script src="/wy-blog/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5("") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+</div>
+<hgroup>
+  <h1><a href="/wy-blog/">Wu Yan</a></h1>
   
-  <entry>
-    <title type="html"><![CDATA[Create Alfred Workflows Using Python]]></title>
-    <link href="http://teloon.github.io/wy-blog/blog/2013/08/25/create-alfred-workflows-using-python/"/>
-    <updated>2013-08-25T20:30:00+08:00</updated>
-    <id>http://teloon.github.io/wy-blog/blog/2013/08/25/create-alfred-workflows-using-python</id>
-    <content type="html"><![CDATA[<p><img src="http://www.alfredapp.com/images/logo.png" width="500" height="300"></p>
+    <h2>what I said was wrong</h2>
+  
+</hgroup>
+
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/wy-blog/">Blog</a></li>
+  <li><a href="/wy-blog/blog/archives">Archives</a></li>
+</ul>
+
+
+<section class="aboutme">
+  <p>
+    Programmer | Artis | Lifehacker
+  </p>
+</section>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		<a class="google" href="https://plus.google.com/114136964255904308215" rel="author" title="Google+">Google+</a>
+		
+		
+		<a class="twitter" href="http://twitter.com/teloon" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/teloon" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/wy-blog/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Create Alfred Workflows Using Python</h1>
+	<div class="entry-content" itemprop="articleBody"><p><img src="http://www.alfredapp.com/images/logo.png" width="500" height="300"></p>
 
 <p><a href="http://www.alfredapp.com/">Alfred</a> is a spotlight-like productivity tool in OSX platform. Compared with spotlight, it offers some extra features, like <strong>web search</strong>, system commands and so on.  If you buy its powerpack, you will get some even more powerful features, like clipboard, snippet, workflows etc. Among them, workflows stand out by providing great extension. To demonstrate, <a href="http://www.alfredworkflow.com/">alfredworkflow</a> collects many great workfows.</p>
 
@@ -44,7 +121,7 @@
 
 <p>Alfred provides four main types of workflow objects: triggers, inputs, actions and outputs. You may think first we need a trigger. But actually, the objects of &ldquo;input type&rdquo; are also triggered by some keyword. And in step 2-4, we need some python script to deal with the query. So scipt filter in inputs category is perfect for us. The following image showes the configuration panel of script filter object.</p>
 
-<p><img src="http://teloon.github.io/wy-blog/images/script_filter.png"></p>
+<p><img src="/wy-blog/images/script_filter.png"></p>
 
 <p>After trigger the &ldquo;script filter&rdquo;, you need to execute some script file. Alfred supports many languages like python, ruby, php, applescript etc. The script in the &ldquo;Script&rdquo; field in the above picture are executed. However, you don&rsquo;t need to put all the code in the field. Actually, the workflow is a folder or package and you can navigate to that folder by click the &ldquo;open workflow folder&rdquo; button at the bottom. So you can put the core script there and call the script in the &ldquo;Script&rdquo; field.</p>
 
@@ -52,7 +129,7 @@
 
 <p>After the script search the query and parse the result, we need to show the result records in Alfred, which Alfred calls <strong>feedback</strong>. The following image shows the actual effect of feedback.</p>
 
-<p><img src="http://teloon.github.io/wy-blog/images/xm_feedback.png"></p>
+<p><img src="/wy-blog/images/xm_feedback.png"></p>
 
 <p>However, there&rsquo;s not much documents for feedback api, only a thread in <a href="http://www.alfredforum.com/topic/5-generating-feedback-in-workflows/">Alfred Forum</a>. Generally, it tells us to print out an xml-format string which includes several fields. We can build the xml-format string manually. But it&rsquo;s tedious and inefficient. There&rsquo;re several great <a href="http://www.alfredforum.com/topic/2030-workflow-libraries-and-helpers/">libraries</a> helping interact with Alfred in an elegant way. For feedback, there&rsquo;s a <a href="https://github.com/lrrfantasy/alfred-feedback-xml-generation">library</a> extract the feedback module from othere big libraries and support many languages, including python.</p>
 
@@ -136,46 +213,89 @@
 
 <p>At last, when the user sellects some record, Alfred should open the url of the song. Luckily, the Alfred has a built-in object that take the url as argument and open it in the default browser. It is located in the &ldquo;Action&rdquo; category with the name &ldquo;Open URL&rdquo;. So the problem left is how to pass the url argument to the open-url object. You may find in the above code that the <code>fb</code> variable also gets a field called <code>arg</code> which contains the url of the song. And Alfred will automatically pass the <code>arg</code> argument to the next object in the workflow. And the content can be got by the <code>{query}</code>. Check the image below:</p>
 
-<p><img src="http://teloon.github.io/wy-blog/images/alfred_open_url.png"></p>
+<p><img src="/wy-blog/images/alfred_open_url.png"></p>
 
 <h1>Last Words</h1>
 
 <p>Alfred actually can be seen as an extremely convenient entrance to many destination. The destination could be some folder, some web page, or some operation. The workflow provies us a lot of possibility by chaining unlimited number of operations. So, with alfred we can free the mouse and with workflow we get a convieniet way to get some several-steps-thing done.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[lorem-ipsum]]></title>
-    <link href="http://teloon.github.io/wy-blog/blog/2013/08/10/lorem-ipsum/"/>
-    <updated>2013-08-10T23:37:00+08:00</updated>
-    <id>http://teloon.github.io/wy-blog/blog/2013/08/10/lorem-ipsum</id>
-    <content type="html"><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
 
-<!-- more -->
+</article>
 
-
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hello world]]></title>
-    <link href="http://teloon.github.io/wy-blog/blog/2013/08/10/hello-world/"/>
-    <updated>2013-08-10T23:34:00+08:00</updated>
-    <id>http://teloon.github.io/wy-blog/blog/2013/08/10/hello-world</id>
-    <content type="html"><![CDATA[<p>A &ldquo;Hello world&rdquo; program is a computer program that outputs &ldquo;Hello, world&rdquo; on a display device. Because it is typically one of the simplest programs possible in most programming languages, it is by tradition often used to illustrate to beginners the most basic syntax of a programming language. It is mostly used to verify that a language or system is operating correctly.</p>
-
-<p>In a device that does not display text, a simple program to produce a signal, such as turning on an LED, is often substituted for &ldquo;Hello world&rdquo; as the introductory program.</p>
-
-<!-- more -->
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
 
 
-<p><img src="http://upload.wikimedia.org/wikipedia/commons/6/60/Hello_World_Perl_GTk2_2012-12-04.png"></p>
 
-<p>“Hello, World”程序指的是指在计算机屏幕上输出“Hello, World!”（意为“世界，你好！”）这行字符串的计算机程序。一般来说，这是每一种计算机编程语言中最基本、最简单的程序，亦通常是初学者所编写的第一个程序。它还可以用来确定该语言的编译器、程序开发环境，以及运行环境是否已经安装妥当。</p>
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2013 - Wu Yan -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
 
-<p>将输出字符串“Hello World”作为第一个示范程序，现在已经成为编程语言学习的传统。该程序因布莱恩·柯林汉（Brian Kernighan）和丹尼斯·里奇（Dennis M. Ritchie）所著的计算机程序设计教程《C程序设计语言》（The C Programming Language）中使用而广泛流传；但这本书并不是“Hello World”的滥觞，虽然这是一个普遍存在的错误认知。</p>
-]]></content>
-  </entry>
-  
-</feed>
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			<script src="/wy-blog/javascripts/slash.js"></script>
+<script src="/wy-blog/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'wysblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://teloon.github.io/wy-blog/blog/2013/08/25/create-alfred-workflows-using-python/';
+        var disqus_url = 'http://teloon.github.io/wy-blog/blog/2013/08/25/create-alfred-workflows-using-python/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-35884827-2']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

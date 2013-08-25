@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: python | Wu Yan]]></title>
+  <link href="http://teloon.github.io/wy-blog/blog/categories/python/atom.xml" rel="self"/>
+  <link href="http://teloon.github.io/wy-blog/"/>
+  <updated>2013-08-25T22:33:11+08:00</updated>
+  <id>http://teloon.github.io/wy-blog/</id>
+  <author>
+    <name><![CDATA[Wu Yan]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Create Alfred Workflows Using Python]]></title>
+    <link href="http://teloon.github.io/wy-blog/blog/2013/08/25/create-alfred-workflows-using-python/"/>
+    <updated>2013-08-25T20:30:00+08:00</updated>
+    <id>http://teloon.github.io/wy-blog/blog/2013/08/25/create-alfred-workflows-using-python</id>
+    <content type="html"><![CDATA[<p><img class="<a" src="href="http://www.alfredapp.com/images/logo.png">http://www.alfredapp.com/images/logo.png</a>" width="500" height="300"></p>
+
+<p><a href="http://www.alfredapp.com/">Alfred</a> is a spotlight-like productivity tool in OSX platform. Compared with spotlight, it offers some extra features, like <strong>web search</strong>, system commands and so on.  If you buy its powerpack, you will get some even more powerful features, like clipboard, snippet, workflows etc. Among them, workflows stand out by providing great extension. To demonstrate, <a href="http://www.alfredworkflow.com/">alfredworkflow</a> collects many great workfows.</p>
+
+<p>Here is a brief introduction to create workflows using python. I&rsquo;ll try to create a workflow that searches the input query against <a href="http://xiami.com">xiami</a>, shows the result songs in Alfred and open the song&rsquo;s page in xiami if select some song.</p>
+
+<!-- more -->
+
+
+<h1>the &lsquo;workflow&rsquo;</h1>
+
+<p>Intruitively, the &lsquo;workflow&rsquo; of this workflow should be:</p>
+
+<ol>
+<li>The workflow is trigger by some keyword</li>
+<li>User input some query words</li>
+<li>Search the query words against xiami and parse the result</li>
+<li>Show the result songs in Alfred</li>
+<li>If the user click the some record in the result list, open the default browser to show the song&rsquo;s webpage</li>
+</ol>
+
+
+<h1>Workflow objects</h1>
+
+<p>Alfred provides four main types of workflow objects: triggers, inputs, actions and outputs. You may think first we need a trigger. But actually, the objects of &ldquo;input type&rdquo; are also triggered by some keyword. And in step 2-4, we need some python script to deal with the query. So scipt filter in inputs category is perfect for us. The following image showes the configuration panel of script filter object.</p>
+
+<p><img src="/images/script_filter.png"></p>
+
+<p>After trigger the &ldquo;script filter&rdquo;, you need to execute some script file. Alfred supports many languages like python, ruby, php, applescript etc. The script in the &ldquo;Script&rdquo; field in the above picture are executed. However, you don&rsquo;t need to put all the code in the field. Actually, the workflow is a folder or package and you can navigate to that folder by click the &ldquo;open workflow folder&rdquo; button at the bottom. So you can put the core script there and call the script in the &ldquo;Script&rdquo; field.</p>
+
+<p>To get the query words, Alfred helps us do the magic works. The &ldquo;query&rdquo; argument stores all the query words. We can get the content of the query by <code>{query}</code> and pass it as an argument to the script.</p>
+
+<p>After the script search the query and parse the result, we need to show the result records in Alfred, which Alfred calls <strong>feedback</strong>. The following image shows the actual effect of feedback.</p>
+
+<p><img src="/images/xm_feedback.png"></p>
+
+<p>However, there&rsquo;s not much documents for feedback api, only a thread in <a href="http://www.alfredforum.com/topic/5-generating-feedback-in-workflows/">Alfred Forum</a>. Generally, it tells us to print out an xml-format string which includes several fields. We can build the xml-format string manually. But it&rsquo;s tedious and inefficient. There&rsquo;re several great <a href="http://www.alfredforum.com/topic/2030-workflow-libraries-and-helpers/">libraries</a> helping interact with Alfred in an elegant way. For feedback, there&rsquo;s a <a href="https://github.com/lrrfantasy/alfred-feedback-xml-generation">library</a> extract the feedback module from othere big libraries and support many languages, including python.</p>
+
+<p>The whole script is as follows. Check the way to build the feedback string.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>query.py </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="err">!</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">env</span> <span class="n">python</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;&amp;</span><span class="n">ndash</span><span class="p">;</span><span class="o">&lt;</span><span class="n">em</span><span class="o">&gt;&amp;</span><span class="n">ndash</span><span class="p">;</span> <span class="n">coding</span><span class="p">:</span><span class="n">utf</span><span class="o">-</span><span class="mi">8</span> <span class="o">&amp;</span><span class="n">ndash</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;&amp;</span><span class="n">ndash</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kn">import</span> <span class="nn">json</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">sys</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">urllib</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">urllib2</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span> <span class="k">as</span> <span class="n">pq</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">Feedback</span> <span class="kn">import</span> <span class="n">Feedback</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="s">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="s">&#39;Mozilla/5.0&#39;</span><span class="p">,</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">}</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">query</span><span class="p">(</span><span class="n">query</span><span class="o">=&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">love</span> <span class="n">the</span> <span class="n">way</span> <span class="n">you</span> <span class="n">lie</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">q_url</span> <span class="o">=</span> <span class="s">&#39;http://www.xiami.com/app/nineteen/search/key/</span><span class="si">%s</span><span class="s">/page/1&#39;</span> <span class="o">%</span> <span class="n">query</span>
+</span><span class='line'><span class="n">req</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">q_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
+</span><span class='line'><span class="n">html</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">response</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+</span><span class='line'><span class="n">results</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s">&#39;results&#39;</span><span class="p">]</span>
+</span><span class='line'><span class="n">fb</span> <span class="o">=</span> <span class="n">Feedback</span><span class="p">()</span>
+</span><span class='line'><span class="k">for</span> <span class="n">rcd</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">name</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">unquote_plus</span><span class="p">(</span><span class="n">rcd</span><span class="p">[</span><span class="s">&#39;song_name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&quot;latin-1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&quot;utf-8&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">album</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">unquote_plus</span><span class="p">(</span><span class="n">rcd</span><span class="p">[</span><span class="s">&#39;album_name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&quot;latin-1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&quot;utf-8&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">artist</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">unquote_plus</span><span class="p">(</span><span class="n">rcd</span><span class="p">[</span><span class="s">&#39;artist_name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&quot;latin-1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&quot;utf-8&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">song_id</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">unquote_plus</span><span class="p">(</span><span class="n">rcd</span><span class="p">[</span><span class="s">&#39;song_id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&quot;latin-1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&quot;utf-8&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">fb</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s"> - </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">name</span><span class="p">),</span>
+</span><span class='line'>                <span class="n">subtitle</span><span class="o">=</span><span class="s">&quot;Artist:</span><span class="si">%s</span><span class="s"> Album:</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">album</span><span class="p">),</span>
+</span><span class='line'>                <span class="n">uid</span><span class="o">=</span><span class="n">song_id</span><span class="p">,</span>
+</span><span class='line'>                <span class="n">arg</span><span class="o">=</span><span class="s">&#39;http://www.xiami.com/song/&#39;</span> <span class="o">+</span> <span class="n">song_id</span><span class="p">)</span>
+</span><span class='line'><span class="k">print</span> <span class="n">fb</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">if</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">main</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;&amp;</span><span class="n">rdquo</span><span class="p">;:</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">1</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">query</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>At last, when the user sellects some record, Alfred should open the url of the song. Luckily, the Alfred has a built-in object that take the url as argument and open it in the default browser. It is located in the &ldquo;Action&rdquo; category with the name &ldquo;Open URL&rdquo;. So the problem left is how to pass the url argument to the open-url object. You may find in the above code that the <code>fb</code> variable also gets a field called <code>arg</code> which contains the url of the song. And Alfred will automatically pass the <code>arg</code> argument to the next object in the workflow. And the content can be got by the <code>{query}</code>. Check the image below:</p>
+
+<p><img src="/images/alfred_open_url.png"></p>
+
+<h1>Last Words</h1>
+
+<p>Alfred actually can be seen as an extremely convenient entrance to many destination. The destination could be some folder, some web page, or some operation. The workflow provies us a lot of possibility by chaining unlimited number of operations. So, with alfred we can free the mouse and with workflow we get a convieniet way to get some several-steps-thing done.</p>
+]]></content>
+  </entry>
+  
+</feed>
