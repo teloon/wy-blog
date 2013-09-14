@@ -18,9 +18,9 @@
 	<link href="/wy-blog/atom.xml" rel="alternate" title="Wu Yan" type="application/atom+xml">
 	
 	<link rel="canonical" href="http://teloon.github.io/wy-blog/blog/2013/08/25/create-alfred-workflows-using-python/">
-	<link href="/wy-blog/favicon.png" rel="shortcut icon">
-	<link href="/wy-blog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-	<link href="/wy-blog/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
@@ -36,7 +36,7 @@
 		<div class="left-col">
 			<div class="intrude-less">
 			<header id="header" class="inner"><div class="profilepic">
-	<script src="/wy-blog/javascripts/md5.js"></script>
+	<script src="/javascripts/md5.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5("telooon@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
@@ -44,15 +44,15 @@
 	</script>
 </div>
 <hgroup>
-  <h1><a href="/wy-blog/">Wu Yan</a></h1>
+  <h1><a href="/">Wu Yan</a></h1>
   
     <h2>what I said was wrong</h2>
   
 </hgroup>
 
 <nav id="main-nav"><ul class="main-navigation">
-  <li><a href="/wy-blog/">Blog</a></li>
-  <li><a href="/wy-blog/blog/archives">Archives</a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
 </ul>
 
 
@@ -121,7 +121,7 @@
 
 <p>Alfred provides four main types of workflow objects: triggers, inputs, actions and outputs. You may think first we need a trigger. But actually, the objects of &ldquo;input type&rdquo; are also triggered by some keyword. And in step 2-4, we need some python script to deal with the query. So scipt filter in inputs category is perfect for us. The following image showes the configuration panel of script filter object.</p>
 
-<p><img src="/wy-blog/images/script_filter.png"></p>
+<p><img src="/images/script_filter.png"></p>
 
 <p>After trigger the &ldquo;script filter&rdquo;, you need to execute some script file. Alfred supports many languages like python, ruby, php, applescript etc. The script in the &ldquo;Script&rdquo; field in the above picture are executed. However, you don&rsquo;t need to put all the code in the field. Actually, the workflow is a folder or package and you can navigate to that folder by click the &ldquo;open workflow folder&rdquo; button at the bottom. So you can put the core script there and call the script in the &ldquo;Script&rdquo; field.</p>
 
@@ -129,7 +129,7 @@
 
 <p>After the script search the query and parse the result, we need to show the result records in Alfred, which Alfred calls <strong>feedback</strong>. The following image shows the actual effect of feedback.</p>
 
-<p><img src="/wy-blog/images/xm_feedback.png"></p>
+<p><img src="/images/xm_feedback.png"></p>
 
 <p>However, there&rsquo;s not much documents for feedback api, only a thread in <a href="http://www.alfredforum.com/topic/5-generating-feedback-in-workflows/">Alfred Forum</a>. Generally, it tells us to print out an xml-format string which includes several fields. We can build the xml-format string manually. But it&rsquo;s tedious and inefficient. There&rsquo;re several great <a href="http://www.alfredforum.com/topic/2030-workflow-libraries-and-helpers/">libraries</a> helping interact with Alfred in an elegant way. For feedback, there&rsquo;s a <a href="https://github.com/lrrfantasy/alfred-feedback-xml-generation">library</a> extract the feedback module from othere big libraries and support many languages, including python.</p>
 
@@ -213,7 +213,7 @@
 
 <p>At last, when the user sellects some record, Alfred should open the url of the song. Luckily, the Alfred has a built-in object that take the url as argument and open it in the default browser. It is located in the &ldquo;Action&rdquo; category with the name &ldquo;Open URL&rdquo;. So the problem left is how to pass the url argument to the open-url object. You may find in the above code that the <code>fb</code> variable also gets a field called <code>arg</code> which contains the url of the song. And Alfred will automatically pass the <code>arg</code> argument to the next object in the workflow. And the content can be got by the <code>{query}</code>. Check the image below:</p>
 
-<p><img src="/wy-blog/images/alfred_open_url.png"></p>
+<p><img src="/images/alfred_open_url.png"></p>
 
 <h1>Last Words</h1>
 
@@ -253,8 +253,8 @@
 </p>
 
 Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
-			<script src="/wy-blog/javascripts/slash.js"></script>
-<script src="/wy-blog/javascripts/jquery.fancybox.pack.js"></script>
+			<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){
 	$('.fancybox').fancybox();
